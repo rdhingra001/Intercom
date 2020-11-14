@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		115F45982560746F002260BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45972560746F002260BF /* AppDelegate.swift */; };
 		115F459A2560746F002260BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45992560746F002260BF /* SceneDelegate.swift */; };
-		115F459C2560746F002260BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F459B2560746F002260BF /* ViewController.swift */; };
 		115F459F2560746F002260BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115F459D2560746F002260BF /* Main.storyboard */; };
 		115F45A125607470002260BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115F45A025607470002260BF /* Assets.xcassets */; };
 		115F45A425607470002260BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115F45A225607470002260BF /* LaunchScreen.storyboard */; };
+		115F45B125607750002260BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B025607750002260BF /* LoginViewController.swift */; };
+		115F45B325607763002260BF /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B225607763002260BF /* CreateUserViewController.swift */; };
+		115F45B52560777F002260BF /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B42560777F002260BF /* PhotoViewerViewController.swift */; };
+		115F45B725607787002260BF /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B625607787002260BF /* VideoPlayerViewController.swift */; };
+		115F45B925607798002260BF /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B825607798002260BF /* NewChatViewController.swift */; };
+		115F45BB256077B3002260BF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BA256077B3002260BF /* ChatViewController.swift */; };
+		115F45BD256077C1002260BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BC256077C1002260BF /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		115F45942560746F002260BF /* Intercom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115F45972560746F002260BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		115F45992560746F002260BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		115F459B2560746F002260BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		115F459E2560746F002260BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		115F45A025607470002260BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		115F45A325607470002260BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		115F45A525607470002260BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		115F45B025607750002260BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		115F45B225607763002260BF /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		115F45B42560777F002260BF /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		115F45B625607787002260BF /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		115F45B825607798002260BF /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
+		115F45BA256077B3002260BF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		115F45BC256077C1002260BF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +70,59 @@
 			children = (
 				115F45972560746F002260BF /* AppDelegate.swift */,
 				115F45992560746F002260BF /* SceneDelegate.swift */,
-				115F459B2560746F002260BF /* ViewController.swift */,
-				115F459D2560746F002260BF /* Main.storyboard */,
+				115F45AB25607637002260BF /* Controllers */,
+				115F45AD25607654002260BF /* Models */,
+				115F45AF25607665002260BF /* Helpers */,
+				115F45AE2560765E002260BF /* View Models */,
+				115F45AC2560764D002260BF /* Views */,
 				115F45A025607470002260BF /* Assets.xcassets */,
-				115F45A225607470002260BF /* LaunchScreen.storyboard */,
 				115F45A525607470002260BF /* Info.plist */,
 			);
 			path = Intercom;
+			sourceTree = "<group>";
+		};
+		115F45AB25607637002260BF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				115F45B025607750002260BF /* LoginViewController.swift */,
+				115F45B225607763002260BF /* CreateUserViewController.swift */,
+				115F45B42560777F002260BF /* PhotoViewerViewController.swift */,
+				115F45B625607787002260BF /* VideoPlayerViewController.swift */,
+				115F45B825607798002260BF /* NewChatViewController.swift */,
+				115F45BA256077B3002260BF /* ChatViewController.swift */,
+				115F45BC256077C1002260BF /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		115F45AC2560764D002260BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				115F459D2560746F002260BF /* Main.storyboard */,
+				115F45A225607470002260BF /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		115F45AD25607654002260BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		115F45AE2560765E002260BF /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		115F45AF25607665002260BF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +195,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				115F459C2560746F002260BF /* ViewController.swift in Sources */,
+				115F45B125607750002260BF /* LoginViewController.swift in Sources */,
+				115F45B325607763002260BF /* CreateUserViewController.swift in Sources */,
+				115F45BB256077B3002260BF /* ChatViewController.swift in Sources */,
+				115F45B725607787002260BF /* VideoPlayerViewController.swift in Sources */,
 				115F45982560746F002260BF /* AppDelegate.swift in Sources */,
 				115F459A2560746F002260BF /* SceneDelegate.swift in Sources */,
+				115F45BD256077C1002260BF /* ProfileViewController.swift in Sources */,
+				115F45B52560777F002260BF /* PhotoViewerViewController.swift in Sources */,
+				115F45B925607798002260BF /* NewChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +353,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5RHMXS494;
 				INFOPLIST_FILE = Intercom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5RHMXS494;
 				INFOPLIST_FILE = Intercom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
