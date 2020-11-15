@@ -19,6 +19,7 @@
 		115F45B925607798002260BF /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45B825607798002260BF /* NewChatViewController.swift */; };
 		115F45BB256077B3002260BF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BA256077B3002260BF /* ChatViewController.swift */; };
 		115F45BD256077C1002260BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BC256077C1002260BF /* ProfileViewController.swift */; };
+		115F45C025609CBC002260BF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BF25609CBC002260BF /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		115F45B825607798002260BF /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		115F45BA256077B3002260BF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		115F45BC256077C1002260BF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		115F45BF25609CBC002260BF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +86,7 @@
 		115F45AB25607637002260BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				115F45B025607750002260BF /* LoginViewController.swift */,
-				115F45B225607763002260BF /* CreateUserViewController.swift */,
+				115F45BE25608C6D002260BF /* Authentication */,
 				115F45B42560777F002260BF /* PhotoViewerViewController.swift */,
 				115F45B625607787002260BF /* VideoPlayerViewController.swift */,
 				115F45B825607798002260BF /* NewChatViewController.swift */,
@@ -121,8 +122,18 @@
 		115F45AF25607665002260BF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				115F45BF25609CBC002260BF /* Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		115F45BE25608C6D002260BF /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				115F45B025607750002260BF /* LoginViewController.swift */,
+				115F45B225607763002260BF /* CreateUserViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				115F45BB256077B3002260BF /* ChatViewController.swift in Sources */,
 				115F45B725607787002260BF /* VideoPlayerViewController.swift in Sources */,
 				115F45982560746F002260BF /* AppDelegate.swift in Sources */,
+				115F45C025609CBC002260BF /* Extensions.swift in Sources */,
 				115F459A2560746F002260BF /* SceneDelegate.swift in Sources */,
 				115F45BD256077C1002260BF /* ProfileViewController.swift in Sources */,
 				115F45B52560777F002260BF /* PhotoViewerViewController.swift in Sources */,
