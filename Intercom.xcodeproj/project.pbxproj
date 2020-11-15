@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112BD3AD2561BA84000FBB5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112BD3AC2561BA84000FBB5A /* GoogleService-Info.plist */; };
 		115F45982560746F002260BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45972560746F002260BF /* AppDelegate.swift */; };
 		115F459A2560746F002260BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45992560746F002260BF /* SceneDelegate.swift */; };
 		115F459F2560746F002260BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115F459D2560746F002260BF /* Main.storyboard */; };
@@ -20,9 +21,11 @@
 		115F45BB256077B3002260BF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BA256077B3002260BF /* ChatViewController.swift */; };
 		115F45BD256077C1002260BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BC256077C1002260BF /* ProfileViewController.swift */; };
 		115F45C025609CBC002260BF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45BF25609CBC002260BF /* Extensions.swift */; };
+		C717BA6EA179E1E213D5ACBE /* Pods_Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F30CE639E088FF56B25BA4 /* Pods_Intercom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112BD3AC2561BA84000FBB5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		115F45942560746F002260BF /* Intercom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115F45972560746F002260BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		115F45992560746F002260BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		115F45BA256077B3002260BF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		115F45BC256077C1002260BF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		115F45BF25609CBC002260BF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		48F30CE639E088FF56B25BA4 /* Pods_Intercom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Intercom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DBB80A339E39CBD12CC44B2 /* Pods-Intercom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Intercom.debug.xcconfig"; path = "Target Support Files/Pods-Intercom/Pods-Intercom.debug.xcconfig"; sourceTree = "<group>"; };
+		8C175CADA30CE29DA1906303 /* Pods-Intercom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Intercom.release.xcconfig"; path = "Target Support Files/Pods-Intercom/Pods-Intercom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C717BA6EA179E1E213D5ACBE /* Pods_Intercom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 			children = (
 				115F45962560746F002260BF /* Intercom */,
 				115F45952560746F002260BF /* Products */,
+				63CACA62459BB242C776A16C /* Pods */,
+				EC51748E458151184FD00961 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +88,7 @@
 				115F45AC2560764D002260BF /* Views */,
 				115F45A025607470002260BF /* Assets.xcassets */,
 				115F45A525607470002260BF /* Info.plist */,
+				112BD3AC2561BA84000FBB5A /* GoogleService-Info.plist */,
 			);
 			path = Intercom;
 			sourceTree = "<group>";
@@ -136,6 +146,24 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		63CACA62459BB242C776A16C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6DBB80A339E39CBD12CC44B2 /* Pods-Intercom.debug.xcconfig */,
+				8C175CADA30CE29DA1906303 /* Pods-Intercom.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EC51748E458151184FD00961 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48F30CE639E088FF56B25BA4 /* Pods_Intercom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 115F45A825607470002260BF /* Build configuration list for PBXNativeTarget "Intercom" */;
 			buildPhases = (
+				45434C7DADDE1504944990C0 /* [CP] Check Pods Manifest.lock */,
 				115F45902560746F002260BF /* Sources */,
 				115F45912560746F002260BF /* Frameworks */,
 				115F45922560746F002260BF /* Resources */,
+				292452A86ACE58F78F956555 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,11 +225,54 @@
 			files = (
 				115F45A425607470002260BF /* LaunchScreen.storyboard in Resources */,
 				115F45A125607470002260BF /* Assets.xcassets in Resources */,
+				112BD3AD2561BA84000FBB5A /* GoogleService-Info.plist in Resources */,
 				115F459F2560746F002260BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		292452A86ACE58F78F956555 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Intercom/Pods-Intercom-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Intercom/Pods-Intercom-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Intercom/Pods-Intercom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45434C7DADDE1504944990C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Intercom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		115F45902560746F002260BF /* Sources */ = {
@@ -359,6 +432,7 @@
 		};
 		115F45A925607470002260BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBB80A339E39CBD12CC44B2 /* Pods-Intercom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -379,6 +453,7 @@
 		};
 		115F45AA25607470002260BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C175CADA30CE29DA1906303 /* Pods-Intercom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

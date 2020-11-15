@@ -7,4 +7,10 @@ target 'Intercom' do
 
   # Pods for Intercom
 
+pod 'Firebase/Core'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+
+
 end
