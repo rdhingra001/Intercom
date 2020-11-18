@@ -9,6 +9,12 @@ import UIKit
 import Firebase
 
 class ChatViewController: UIViewController {
+    
+    private let chatView: UITableView = {
+        let tview = UITableView()
+        tview.register(UITableViewCell.self, forCellReuseIdentifier: "chatCell")
+        return tview
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
