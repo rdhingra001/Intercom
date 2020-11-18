@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
     
@@ -35,6 +36,9 @@ class ProfileViewController: UIViewController {
             
             // Creating a "strong" reference on "self"
             guard let strongSelf = self else { return }
+            
+            // Sign Out Google
+            GIDSignIn.sharedInstance()?.signOut()
             
             // Ping Firebase's authentication to logout user
             do {

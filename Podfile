@@ -7,10 +7,14 @@ target 'Intercom' do
 
   # Pods for Intercom
 
+# Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+
+# Google
+pod 'GoogleSignIn'
 
 
 end

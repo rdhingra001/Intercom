@@ -26,12 +26,13 @@ extension DatabaseManager {
         
         database.child(safeEmail).observeSingleEvent(of: .value) { (snapshot) in
             guard (snapshot.value as? String) == nil else {
-                completion(false)
+                completion(true)
                 return
             }
         }
         
-        completion(true)
+        print("User is not used, sending false")
+        completion(false)
     }
     
     /// Inserts a new user to the Firebase Realtime Database

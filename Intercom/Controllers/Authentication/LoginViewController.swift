@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -65,9 +66,30 @@ class LoginViewController: UIViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return btn
     }()
+    
+    private let googleSignInBtn: GIDSignInButton = {
+        let btn = GIDSignInButton()
+        return btn
+    }()
+    
+    private var loginObserver: NSObjectProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Listen for notification call from AppDelegate.swift
+        loginObserver = NotificationCenter.default.addObserver(forName: .didLoginNotification, object: nil, queue: .main) { [weak self] (notification) in
+            
+            // Creating a "strong" reference to "self"
+            guard let strongSelf = self else { return }
+            
+            // Dismiss view controller to reveal homepage
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        
+        // Giving Google access to this controller
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         title = "Login"
         view.backgroundColor = .link
         
@@ -80,10 +102,18 @@ class LoginViewController: UIViewController {
         mainView.addSubview(emailField)
         mainView.addSubview(passwordField)
         mainView.addSubview(loginBtn)
+        mainView.addSubview(googleSignInBtn)
         
         // Assigning the delegates to itself
         emailField.delegate = self
         passwordField.delegate = self
+    }
+    
+    // Remove the login observer after authentication finishes successfully
+    deinit {
+        if loginObserver != nil {
+            NotificationCenter.default.removeObserver(loginObserver)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,6 +134,9 @@ class LoginViewController: UIViewController {
         
         // Aligning the button
         loginBtn.frame = CGRect(x: 30, y: passwordField.bottom + 10, width: mainView.width - 60, height: 52)
+        
+        // Aligning the google sign in button
+        googleSignInBtn.frame = CGRect(x: 30, y: loginBtn.bottom + 10, width: mainView.width - 60, height: 52)
     
     }
     
