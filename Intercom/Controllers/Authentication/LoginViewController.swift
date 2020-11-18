@@ -118,8 +118,8 @@ class LoginViewController: UIViewController {
         // Firebase Authentication
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             guard let strongSelf = self else { return }
-            guard result != nil else {
-                print("Failed to login in user with email: \(email)")
+            guard result != nil && error == nil else {
+                print("Failed to login in user with email, error: \(error!.localizedDescription)")
                 return
             }
             let user = result!.user
