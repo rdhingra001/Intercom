@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateUserViewController: UIViewController {
     
     // Preparing our assets
     private let profilePicView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "person")
+        view.image = UIImage(systemName: "person.circle")
         view.tintColor = .systemGray3
         view.contentMode = .scaleAspectFit
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedChangeProfilePic))
@@ -20,6 +21,8 @@ class CreateUserViewController: UIViewController {
         view.addGestureRecognizer(gesture)
         view.isUserInteractionEnabled = true
         view.layer.masksToBounds = true
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 2
         return view
     }()
     
@@ -163,15 +166,37 @@ class CreateUserViewController: UIViewController {
             return
         }
         
-        // Firebase Authentication
+        // Check if email is in use
+        DatabaseManager.shared.emailIsUsed(with: email) { [weak self] (exists) in
+            guard let strongSelf = self else { return }
+            guard !exists else {
+                // User already exists
+                strongSelf.alertRegisterError(message: "Looks like an existing user is already using that email.")
+                return
+            }
+            // Firebase Authentication
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                guard result != nil else {
+                    print("Error creating user with email: \(email)")
+                    return
+                }
+                
+                // Writing user data to database
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                
+                
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
     @objc private func tappedChangeProfilePic() {
         presentPhotoActions()
     }
     
-    func alertRegisterError() {
-        let alert = UIAlertController(title: "Uh Oh", message: "Please enter all information to create an Intercom account. Your password also needs to be at least 6 characters.", preferredStyle: .alert)
+    func alertRegisterError(message: String = "Please enter all information to create an Intercom account.") {
+        let alert = UIAlertController(title: "Uh Oh", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }

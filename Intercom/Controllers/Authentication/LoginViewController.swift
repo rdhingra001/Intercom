@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -112,6 +113,18 @@ class LoginViewController: UIViewController {
         guard let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !email.isEmpty, !password.isEmpty, password.count >= 6 else {
             alertUserLoginError()
             return
+        }
+        
+        // Firebase Authentication
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
+            guard let strongSelf = self else { return }
+            guard result != nil else {
+                print("Failed to login in user with email: \(email)")
+                return
+            }
+            let user = result!.user
+            print("Logged in user: \(user)")
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     

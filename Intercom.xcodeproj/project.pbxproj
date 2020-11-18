@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112A4B632564B8F900ACB50E /* Database+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A4B622564B8F900ACB50E /* Database+.swift */; };
+		112A4B652564BA2200ACB50E /* ChatAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A4B642564BA2200ACB50E /* ChatAppUser.swift */; };
 		112BD3AD2561BA84000FBB5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112BD3AC2561BA84000FBB5A /* GoogleService-Info.plist */; };
 		115F45982560746F002260BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45972560746F002260BF /* AppDelegate.swift */; };
 		115F459A2560746F002260BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F45992560746F002260BF /* SceneDelegate.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112A4B622564B8F900ACB50E /* Database+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+.swift"; sourceTree = "<group>"; };
+		112A4B642564BA2200ACB50E /* ChatAppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUser.swift; sourceTree = "<group>"; };
 		112BD3AC2561BA84000FBB5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		115F45942560746F002260BF /* Intercom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115F45972560746F002260BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112A4B612564B8E700ACB50E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				112A4B622564B8F900ACB50E /* Database+.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		115F458B2560746F002260BF = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		115F45AD25607654002260BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				112A4B642564BA2200ACB50E /* ChatAppUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +145,7 @@
 		115F45AF25607665002260BF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				112A4B612564B8E700ACB50E /* Managers */,
 				115F45BF25609CBC002260BF /* Extensions.swift */,
 			);
 			path = Helpers;
@@ -152,7 +166,6 @@
 				6DBB80A339E39CBD12CC44B2 /* Pods-Intercom.debug.xcconfig */,
 				8C175CADA30CE29DA1906303 /* Pods-Intercom.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -280,9 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				115F45B125607750002260BF /* LoginViewController.swift in Sources */,
+				112A4B652564BA2200ACB50E /* ChatAppUser.swift in Sources */,
 				115F45B325607763002260BF /* CreateUserViewController.swift in Sources */,
 				115F45BB256077B3002260BF /* ChatViewController.swift in Sources */,
 				115F45B725607787002260BF /* VideoPlayerViewController.swift in Sources */,
+				112A4B632564B8F900ACB50E /* Database+.swift in Sources */,
 				115F45982560746F002260BF /* AppDelegate.swift in Sources */,
 				115F45C025609CBC002260BF /* Extensions.swift in Sources */,
 				115F459A2560746F002260BF /* SceneDelegate.swift in Sources */,
