@@ -17,10 +17,6 @@ class CreateUserViewController: UIViewController {
         view.image = UIImage(systemName: "person.circle")
         view.tintColor = .systemGray3
         view.contentMode = .scaleAspectFit
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedChangeProfilePic))
-        gesture.numberOfTouchesRequired = 1
-        view.addGestureRecognizer(gesture)
-        view.isUserInteractionEnabled = true
         view.layer.masksToBounds = true
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 2
@@ -125,6 +121,12 @@ class CreateUserViewController: UIViewController {
         // Assigning the delegates to itself
         emailField.delegate = self
         passwordField.delegate = self
+        
+        // Add the tap gesture to the profile picture selector
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedChangeProfilePic))
+        gesture.numberOfTouchesRequired = 1
+        profilePicView.addGestureRecognizer(gesture)
+        profilePicView.isUserInteractionEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -196,7 +198,32 @@ class CreateUserViewController: UIViewController {
                 }
                 
                 // Writing user data to database
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                let intercomUser = IntercomUser(firstName: firstName, lastName: lastName, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: intercomUser) { (done) in
+                    
+                    if done {
+                        // Upload image
+                        guard let image = strongSelf.profilePicView.image,
+                              let data = image.pngData() else {
+                            return
+                        }
+                        
+                        let fileName = intercomUser.profilePicFileName
+                        
+                        // Send the data and file name to be sent to Firebase Storage
+                        StorageManager.shared.uploadProfilePic(with: data, fileName: fileName) { (result) in
+                            switch result {
+                            case .success(let downloadURL):
+                                UserDefaults.standard.set(downloadURL, forKey: "profilePicUrl")
+                                print(downloadURL)
+                            case .failure(let error):
+                                print("Failure received to completion handler: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                }
+                
+                // Uploading user's profile picture to Firebase Storage
                 
                 
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)

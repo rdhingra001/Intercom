@@ -61,13 +61,44 @@ extension AppDelegate: GIDSignInDelegate {
               let lastName = user.profile.familyName else { return }
         
         // Check if a user with the same email already exists
-        DatabaseManager.shared.emailIsUsed(with: email) { (exists) in
+        DatabaseManager.shared.emailIsUsed(with: email) { [weak self] (exists) in
+            guard let strongSelf = self else { return }
             if !exists {
                 // Insert to database
                 print("Adding to database")
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName,
-                                                                    emailAddress: email))
+                let intercomUser = IntercomUser(firstName: firstName,
+                                                lastName: lastName,
+                                                emailAddress: email)
+                
+                DatabaseManager.shared.insertUser(with: intercomUser, completion: { done in
+                    if done {
+                        // Upload image
+                        if user.profile.hasImage {
+                            guard let url = user.profile.imageURL(withDimension: 200) else { return }
+                            
+                            // Decoding the image data from url
+                            URLSession.shared.dataTask(with: url) { (data, _, _) in
+                                guard let data = data else { return }
+                                
+                                // Kicking off the upload task
+                                let fileName = intercomUser.profilePicFileName
+                                
+                                // Send the data and file name to be sent to Firebase Storage
+                                StorageManager.shared.uploadProfilePic(with: data, fileName: fileName) { (result) in
+                                    switch result {
+                                    case .success(let downloadURL):
+                                        UserDefaults.standard.set(downloadURL, forKey: "profilePicUrl")
+                                        print(downloadURL)
+                                    case .failure(let error):
+                                        print("Failure received to completion handler: \(error.localizedDescription)")
+                                    }
+                                }
+                            }.resume()
+                            
+                        }
+                    
+                    }
+                })
             }
             else {
                 print("user already exists")

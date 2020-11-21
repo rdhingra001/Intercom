@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChatAppUser {
+struct IntercomUser {
     let firstName: String
     let lastName: String
     let emailAddress: String
@@ -17,5 +17,8 @@ struct ChatAppUser {
         safe = safe.replacingOccurrences(of: "@", with: "-")
         return safe
     }
-    //let profilePicUrl: String
+    
+    var profilePicFileName: String {
+        return "\(safeEmail)_profile_pic.png"
+    }
 }

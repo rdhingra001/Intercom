@@ -36,10 +36,17 @@ extension DatabaseManager {
     }
     
     /// Inserts a new user to the Firebase Realtime Database
-    public func insertUser(with user: ChatAppUser) {
+    public func insertUser(with user: IntercomUser, completion: @escaping ((Bool) -> Void)) {
         database.child(user.safeEmail).setValue([
             "firstName": user.firstName,
             "lastName": user.lastName
-        ])
+        ]) { (error, _) in
+            guard error == nil else {
+                print("Failed to write database, error: \(error!.localizedDescription)")
+                completion(false)
+                return
+            }
+            completion(true)
+        }
     }
 }
