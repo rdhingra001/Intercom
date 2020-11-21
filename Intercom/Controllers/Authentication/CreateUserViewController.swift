@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class CreateUserViewController: UIViewController {
     
@@ -104,6 +105,8 @@ class CreateUserViewController: UIViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return btn
     }()
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,9 +169,17 @@ class CreateUserViewController: UIViewController {
             return
         }
         
+        // Show the progress indicator
+        spinner.show(in: view)
+        
         // Check if email is in use
         DatabaseManager.shared.emailIsUsed(with: email) { [weak self] (exists) in
             guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
             guard !exists else {
                 // User already exists
                 strongSelf.alertRegisterError(message: "Looks like an existing user is already using that email.")
@@ -176,8 +187,11 @@ class CreateUserViewController: UIViewController {
             }
             // Firebase Authentication
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                guard result != nil else {
-                    print("Error creating user with email: \(email)")
+                guard result != nil, error == nil else {
+                    if let err = error {
+                        print(err.localizedDescription)
+                        strongSelf.alertRegisterError(message: err.localizedDescription)
+                    }
                     return
                 }
                 

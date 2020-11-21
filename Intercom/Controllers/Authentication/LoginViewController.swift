@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -71,6 +72,8 @@ class LoginViewController: UIViewController {
         let btn = GIDSignInButton()
         return btn
     }()
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     private var loginObserver: NSObjectProtocol!
 
@@ -143,16 +146,28 @@ class LoginViewController: UIViewController {
     @objc func loginButtonTapped() {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
+        
         guard let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !email.isEmpty, !password.isEmpty, password.count >= 6 else {
             alertUserLoginError()
             return
         }
         
+        // Show progress indicator
+        spinner.show(in: view)
+        
         // Firebase Authentication
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
             guard result != nil && error == nil else {
-                print("Failed to login in user with email, error: \(error!.localizedDescription)")
+                if let err = error {
+                    print(err.localizedDescription)
+                    strongSelf.alertUserLoginError(message: err.localizedDescription)
+                }
                 return
             }
             let user = result!.user
@@ -161,8 +176,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func alertUserLoginError() {
-        let alert = UIAlertController(title: "Uh Oh", message: "Please enter all information to authenticate.", preferredStyle: .alert)
+    func alertUserLoginError(message: String = "Please enter all information to authenticate.") {
+        let alert = UIAlertController(title: "Uh Oh", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }

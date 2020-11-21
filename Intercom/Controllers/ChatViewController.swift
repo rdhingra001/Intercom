@@ -2,37 +2,48 @@
 //  ChatViewController.swift
 //  Intercom
 //
-//  Created by  Ronit D. on 11/14/20.
+//  Created by  Ronit D. on 11/18/20.
 //
 
 import UIKit
-import Firebase
+import MessageKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: MessagesViewController {
     
-    private let chatView: UITableView = {
-        let tview = UITableView()
-        tview.register(UITableViewCell.self, forCellReuseIdentifier: "chatCell")
-        return tview
-    }()
+    private var messages = [Message]()
+    private let selfSender = Sender(photoURL: "", senderId: "1", displayName: "Ronit Dhingra")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .cyan
+        messages.append(Message(sender: selfSender,
+                                messageId: "1",
+                                sentDate: Date(),
+                                kind: .text("Hello World message")))
+        
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        validateAuth()
-    }
-    
-    private func validateAuth() {
-        if Auth.auth().currentUser == nil {
-            let vc = LoginViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: true, completion: nil)
-            print("Firebase user not found, successfully sent user to authentication page")
-        }
-    }
 
+}
+
+// Messages Collection View
+extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
+    
+    // Gets current sender
+    func currentSender() -> SenderType {
+        return selfSender
+    }
+    
+    // Gets messages per item
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    
+    // Number of sections
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+    }
 }
